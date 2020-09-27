@@ -33,7 +33,7 @@ BookCopy* getBookCopyBySerialNum(int serial,BookCopy * booksCopy[],int length){
     return 0;
 }
 
-void do_for_books(Book * books, int num, void (*f)(Book *)){
+void do_for_books(Book const * books, int num, void (*f)(Book const *)){
     for (int i=0; i<num; i++)
         (*f)(&books[i]);
 }

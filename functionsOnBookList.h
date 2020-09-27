@@ -9,7 +9,7 @@
 int get_min_promotion(Book books[],int length);
 float get_min_thrilling_factor(Book books[],int length);
 BookCopy* getBookCopyBySerialNum(int ,BookCopy * [],int );
-void do_for_books(Book * books, int num, void (*f)(Book *));
+void do_for_books( Book const * books, int num, void (*f)(Book const *));
 
 
 

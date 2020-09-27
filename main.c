@@ -6,6 +6,7 @@
 #include "books.h"
 #include <stdlib.h>
 #include "functionsOnBookList.h"
+#include "local_library.h"
 #define BOOK_SIZE (20)
 
 
@@ -13,7 +14,8 @@
 int main() {
 
     extern struct book books[BOOK_SIZE];
-    extern int interalExist(int userInteralNum);
+    //extern int interalExist(int userInteralNum);
+    const Book * firstBook=startBooks();
     int serialNum;
     int userChoose;
     bool borrow;
@@ -25,11 +27,11 @@ int main() {
         print_book(&books[i]);
     }
 
-    do_for_books(books, BOOK_SIZE, (void (*)(Book *)) &print_non_fiction);
+    do_for_books(firstBook, BOOK_SIZE, (void (*)(const Book *))  &print_non_fiction);
     printf("Print book list nicely\n");
-    do_for_books(books, BOOK_SIZE, (void (*)(Book *))&print_nicely);
+    do_for_books(firstBook, BOOK_SIZE, (void (*)(const Book *))&print_nicely);
     printf("Most Promoted:\n");
-    do_for_books(books, BOOK_SIZE,(void (*)(Book *)) &print_most_promoted);
+    do_for_books(firstBook, BOOK_SIZE,(void (*)(const Book *))&print_most_promoted);
 
     printf("Minimal promotion: %d\n",get_min_promotion(books,BOOK_SIZE));
     printf("Mnimal factor: %f\n",get_min_thrilling_factor(books,BOOK_SIZE));
